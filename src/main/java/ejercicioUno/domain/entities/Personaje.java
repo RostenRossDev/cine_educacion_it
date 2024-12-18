@@ -1,18 +1,39 @@
 package ejercicioUno.domain.entities;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-//@Getter
-//@Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@ToString
+
+@Table(name = "PERSONAJES")
+@Entity
 public class Personaje {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nombre;
     private Integer edad;
     private Double peso;
     private String historia;
+
+    @ManyToOne
     private PeliculaSerie filme;
+
+
+
+
+
+
+
+
+    //GETTERS Y SETERS
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;

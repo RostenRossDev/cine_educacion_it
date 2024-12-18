@@ -58,7 +58,8 @@ public class RandomDataGenerator {
         List<Genero> generos = new ArrayList<>();
         for (int i = 0; i < cantidad; i++) {
             Genero genero = new Genero();
-            genero.setNombre("Género " + (i + 1));
+            genero.setNombre("Género" + (i + 1));
+            System.out.println("generos: " + genero);
             genero.setFilms(generarPeliculasSeries(RANDOM.nextInt(5) + 1)); // De 1 a 5 películas por género
             generos.add(genero);
         }
