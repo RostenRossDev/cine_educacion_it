@@ -2,7 +2,9 @@ package ejercicioUno.controllers;
 
 import ejercicioUno.domain.entities.PeliculaSerie;
 import ejercicioUno.domain.entities.Personaje;
+import ejercicioUno.service.PersonajeService;
 import ejercicioUno.utils.RandomDataGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,25 +19,23 @@ import java.util.stream.Collectors;
 @RequestMapping("/personajes")
 public class PersonajeController {
 
+    @Autowired
+    private PersonajeService personajeService;
+
     @GetMapping("/")
     public ResponseEntity<?> getPersonajes(){
         //return new ResponseEntity<>(personajes, HttpStatus.OK);
-        return ResponseEntity.ok(RandomDataGenerator.generarPersonajes(20));
+        return ResponseEntity.ok(personajeService.findAll());
     }
 
     @GetMapping("/{nombre}")
     public ResponseEntity<?> getPersonajesByNombre(@PathVariable("nombre") String nombre){
-        return ResponseEntity.ok(RandomDataGenerator.generarPersonajes(20)
-                .stream()
-                .filter(item -> item.getNombre().equals(nombre))
-                .collect(Collectors.toList()));
+        return ResponseEntity.ok(personajeService.findByName(nombre));
     }
 
     @GetMapping("/edad/{edad}")
     public ResponseEntity<?> getPersonajesByEdad(@PathVariable("edad") Integer edad){
-        return ResponseEntity.ok(RandomDataGenerator.generarPersonajes(200)
-                .stream()
-                .filter(item -> item.getEdad().intValue() == edad.intValue())
-                .collect(Collectors.toList()));
+        return ResponseEntity.ok(personajeService.findByEdad(edad));
     }
+
 }

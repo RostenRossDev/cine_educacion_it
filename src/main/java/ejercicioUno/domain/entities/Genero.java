@@ -14,7 +14,7 @@ public class Genero {
     private Long id;
     private String nombre;
 
-    @OneToMany
+    @ManyToMany(mappedBy = "generos", fetch = FetchType.EAGER)
     private List<PeliculaSerie> films;
 
 

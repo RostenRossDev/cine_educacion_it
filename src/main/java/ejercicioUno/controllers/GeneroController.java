@@ -1,6 +1,7 @@
 package ejercicioUno.controllers;
 
 import ejercicioUno.predicates.Predicates;
+import ejercicioUno.service.GeneroService;
 import ejercicioUno.service.PeliculaService;
 import ejercicioUno.utils.RandomDataGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,27 +15,23 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/peliculas")
-public class PeliculaController {
+@RequestMapping("/generos")
+public class GeneroController {
 
     @Autowired
-    private PeliculaService peliculaService;
+    private GeneroService generoService;
 
     @GetMapping("/")
     public ResponseEntity<?> getAlll(){
 
-        return ResponseEntity.ok(peliculaService.findAll());
+        return ResponseEntity.ok(generoService.findAll());
     }
 
-    @GetMapping("/titulo/{titulo}")
-    public ResponseEntity<?> getByTitulo(@PathVariable("titulo") String titulo){
+    @GetMapping("/genero/{genero}")
+    public ResponseEntity<?> getByGenero(@PathVariable("genero") String genero){
 
-        return ResponseEntity.ok(peliculaService.findByTitulo(titulo));
+        return ResponseEntity.ok(generoService.findByName(genero));
 
     }
 
-    @GetMapping("/personaje/{name}")
-    public ResponseEntity<?> allByPersonajeNombre(@PathVariable("name") String name){
-        return ResponseEntity.ok(peliculaService.findAllByPersonajeNombre(name));
-    }
 }

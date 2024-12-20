@@ -17,5 +17,4 @@ public interface PeliculaRespository extends JpaRepository<PeliculaSerie, Long> 
 
     @Query("SELECT p FROM PeliculaSerie p JOIN p.personajes pj WHERE pj.nombre = :nombrePersonaje")
     List<PeliculaSerie> findAllByPersonajeNombre(@Param("nombrePersonaje") String nombrePersonaje);
-
 }

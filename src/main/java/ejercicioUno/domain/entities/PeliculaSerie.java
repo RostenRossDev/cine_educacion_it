@@ -3,6 +3,7 @@ package ejercicioUno.domain.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.context.annotation.Lazy;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -18,11 +19,19 @@ public class PeliculaSerie {
     private Integer calificacion;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "filme")
+    @OneToMany(mappedBy = "filme", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Personaje> personajes;
 
     @Column(name = "CREATION_DATE")
     private LocalDateTime fechaCreacion;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "PELICULA_GENERO", // Nombre de la tabla intermedia
+            joinColumns = @JoinColumn(name = "pelicula_id"), // FK de esta clase
+            inverseJoinColumns = @JoinColumn(name = "genero_id") // FK de la otra clase
+    )
+    private List<Genero> generos;
 
 
 
