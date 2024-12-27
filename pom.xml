@@ -66,6 +66,12 @@
 			<version>8.0.33</version> <!-- Usa la versión más reciente disponible -->
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webflux -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webflux</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>

@@ -38,4 +38,8 @@ public class PersonajeController {
         return ResponseEntity.ok(personajeService.findByEdad(edad));
     }
 
+    @GetMapping("/cantidad/{numero}")
+    public ResponseEntity<?> getPersonajesByCantidad(@PathVariable("cantidad") Integer edad){
+        return ResponseEntity.ok(personajeService.findByEdad(edad));
+    }
 }

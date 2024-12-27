@@ -1,19 +1,23 @@
 package ejercicioUno.service;
 
 import ejercicioUno.domain.entities.PeliculaSerie;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Map;
 
 public interface PeliculaService {
 
-    List<PeliculaSerie> findAll();
-    List<PeliculaSerie> findByTitulo(String name);
+    ResponseEntity<Map<String, Object>> findAll();
+    ResponseEntity<Map<String, Object>> findByTitulo(String name);
 
-    PeliculaSerie findById(Long id);
+    ResponseEntity<Map<String, Object>> findById(Long id);
 
-    PeliculaSerie crearActualizar(PeliculaSerie peliculaSerie);
+    ResponseEntity<Map<String, Object>> crearActualizar(PeliculaSerie peliculaSerie);
 
     void deleteById(Long id);
 
-    List<PeliculaSerie> findAllByPersonajeNombre(String nombre);
+    ResponseEntity<Map<String, Object>>  findAllByPersonajeNombre(String nombre);
+
+    ResponseEntity<Map<String, Object>> starWar();
 }

@@ -23,7 +23,6 @@ public class GeneroController {
 
     @GetMapping("/")
     public ResponseEntity<?> getAlll(){
-
         return ResponseEntity.ok(generoService.findAll());
     }
 
